@@ -1,0 +1,4 @@
+import BSM_gg_hh
+generate g g > h h
+output GG_HH_generation
+exit
