@@ -16,6 +16,11 @@ cd MG5_aMC_v2_6_1/models
 wget https://cms-project-generators.web.cern.ch/cms-project-generators/BSM_gg_hh.tar
 tar -xvf BSM_gg_hh.tar
 cd ../..
+## install also the VBF HH model
+cd MG5_aMC_v2_6_1/models
+wget https://cms-project-generators.web.cern.ch/cms-project-generators/SM_HEL_UFO_noLightYukawa_HH_VBF.tar.gz
+tar zxvf SM_HEL_UFO_noLightYukawa_HH_VBF.tar.gz
+cd ../..
 ```
 
 # Prepare the folder for the generation
@@ -24,7 +29,8 @@ cd MG5_aMC_v2_6_1
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_generation.txt
 cd ..
 ```
-which will create a folder ``MG5_aMC_v2_6_1/GG_HH_generation``
+which will create a folder ``MG5_aMC_v2_6_1/GG_HH_generation``.
+If you want to generate VBF HH, use the script ``../MG5_HH_generation/prepare_MG5_VBFgeneration.txt``
 
 # For an interactive generation (one point at a time!)
 1. `` cd MG5_aMC_v2_6_1``
