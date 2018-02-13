@@ -1,0 +1,4 @@
+import model SM_HEL_UFO_noLightYukawa
+generate p p > h h j j $$ z w+ w- / a j QED=4
+output VBF_HH_generation
+exit
