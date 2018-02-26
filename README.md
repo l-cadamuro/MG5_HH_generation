@@ -31,6 +31,7 @@ cd ../..
 ```
 
 # Prepare the folder for the generation
+**Gluon fusion**
 ```
 cd MG5_aMC_v2_6_1
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_generation.txt
@@ -38,7 +39,13 @@ cd ..
 ```
 which will create a folder ``MG5_aMC_v2_6_1/GG_HH_generation``.
 
-If you want to generate VBF HH, use the script ``../MG5_HH_generation/prepare_MG5_VBFgeneration.txt`` that created the folder `MG5_aMC_v2_6_1/VBF_HH_generation``
+**Vector boson fusion**
+```
+cd MG5_aMC_v2_6_1
+./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_VBFgeneration.txt
+cd ..
+```
+which will create a folder ``MG5_aMC_v2_6_1/VBF_HH_generation``.
 
 # For an interactive generation (one point at a time!)
 1. `` cd MG5_aMC_v2_6_1``
