@@ -48,6 +48,16 @@ cd ..
 ```
 which will create a folder ``MG5_aMC_v2_6_1/VBF_HH_generation``.
 
+*Generating multiple folders*
+The scripts ``prepare_MG5_many.sh`` and ``prepare_MG5_many.sh`` will simply call the above multiple time (call them from ``CMSSW/src``).
+However, it is much faster to generate one output folder, and then simply do
+```
+cd MG5_aMC_v2_6_1
+FLD_NAME=GG_HH_generation # or VBF_HH_generation
+for i in {1..HOW_MANY_YOU_WANT}; do cp -r FLD_NAME FLD_NAME_${i}; done
+```
+which avoid re-running the diagrams every time.
+
 # For an interactive generation (one point at a time!)
 1. `` cd MG5_aMC_v2_6_1``
 2. set the number of events, energy etc.. by editing ``GG_HH_generation/Cards/run_card.dat``
