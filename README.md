@@ -7,6 +7,7 @@ Utilities to generate LHE files of HH samples using aMC_@NLO
 [For a gridpack generation (single core but can be sent to cluster or grid)](#for-a-gridpack-generation-single-core-but-can-be-sent-to-cluster-or-grid)  
 [Running on the llr tier3](#running-on-the-llr-tier3)  
 [Cluster mode](#cluster-mode)  
+[Disable browser opening](#disable-browser-opening)
 
 # Instructions to install
 ```
@@ -130,12 +131,23 @@ The modified script is also copied in [llr/cluster.py](llr/cluster.py), from MG5
 ```
 
 # Cluster mode
-Genearation defaults to multicore on a single machine. To use the cluster mode (jobs sent to cluster) you must edit ``input/mg5_configuration.txt``, uncomment run_mode and set it to 1:
+Genearation defaults to multicore on a single machine. To use the cluster mode (jobs sent to cluster), before generating the process, you must edit ``input/mg5_configuration.txt``, uncomment run_mode and set it to 1:
 ```
 #! Default Running mode
 #!  0: single machine/ 1: cluster / 2: multicore
 # run_mode = 2
 ```
+If the process was already generated, edit the card in ``PROCESS_FOLDER/Cards/me5_configuration.txt``  
 To run on the LLR cluster see [the corresponding section](#running-on-the-llr-tier3)
 
+# Disable browser opening
+Before generating the output, open the file ``input/mg5_configuration.txt`` and set
+```
+# Allow/Forbid the automatic opening of the web browser (on the
+status page)
+#when launching MadEvent [True/False]
+automatic_html_opening = False
+```
+If the process was already generated, edit the card in ``PROCESS_FOLDER/Cards/me5_configuration.txt``  
+See also [this link](https://answers.launchpad.net/mg5amcnlo/+faq/1943)
 
