@@ -53,3 +53,36 @@ you can also generate the config file with MG5_HH_generation/make_config_ggHH.sh
 
 # For a gridpack generation (single core, but can be sent to cluster or grid)
 1. In ``GG_HH_generation/Cards/run_card.dat`` set ``True = gridpack``
+
+# Running on the llr tier3
+MadGraph code uses the condor submission commands, which will not work for the LLR Tier3 cluster.
+TO make it work, one needs to modify the file ``madgraph/various/cluster.py`` to add the following lines (thanks Andrea!)
+
+1. in class 
+
+2. in class ``CondorCluster(Cluster)``, function ``submit`` (approx. line 860) replace the block ``text = """ `` with
+```
+        # A.S: changed to make it compliant with submission at llr 
+        text = """Executable = %(prog)s
+                  output = %(stdout)s
+                  error = %(stderr)s
+                  log = %(log)s
+                  %(argument)s
+                  environment = CONDOR_ID=$(Cluster).$(Process)
+                  Universe = vanilla
+                  notification = Error
+                  Initialdir = %(cwd)s
+                  %(requirement)s
+                  getenv=True
+
+                  accounting_group = cms
+                  concurrency_limits_expr = strcat(T3Queue,":",RequestCpus," ",AcctGroupUser,":",RequestCpus)
+
+                  +T3Queue="short"
+                  +T3Group="cms"
+                  +T3Submit=true
+
+                  queue 1
+               """
+```
+
