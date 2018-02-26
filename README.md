@@ -115,4 +115,13 @@ The modified script is also copied in [llr/cluster.py](llr/cluster.py), from MG5
                """
 ```
 
+# Cluster mode
+Genearation defaults to multicore on a single machine. To use the cluster mode (jobs sent to cluster) you must edit ``input/mg5_configuration.txt``, uncomment run_mode and set it to 1:
+```
+#! Default Running mode
+#!  0: single machine/ 1: cluster / 2: multicore
+# run_mode = 2
+```
+To run on the LLR cluster see [the corresponding section](#running-on-the-llr-tier3)
+
 
