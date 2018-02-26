@@ -1,6 +1,13 @@
 # MG5_HH_generation
 Utilities to generate LHE files of HH samples using aMC_@NLO
 
+[Instructions to install](#instructions-to-install)  
+[Prepare the folder for the generation](#prepare-the-folder-for-the-generation)  
+[For an interactive generation (one point at a time!)](#for-an-interactive-generation-one-point-at-a-time)  
+[For a gridpack generation (single core but can be sent to cluster or grid)](#for-a-gridpack-generation-single-core-but-can-be-sent-to-cluster-or-grid)  
+[Running on the llr tier3](#running-on-the-llr-tier3)  
+[Cluster mode](#cluster-mode)  
+
 # Instructions to install
 ```
 ## get CMSSW environment
@@ -51,7 +58,7 @@ set  a2  1.0
 ```
 you can also generate the config file with MG5_HH_generation/make_config_ggHH.sh
 
-# For a gridpack generation (single core, but can be sent to cluster or grid)
+# For a gridpack generation (single core but can be sent to cluster or grid)
 1. In ``GG_HH_generation/Cards/run_card.dat`` set ``True = gridpack``
 
 # Running on the llr tier3
