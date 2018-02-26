@@ -57,7 +57,8 @@ you can also generate the config file with MG5_HH_generation/make_config_ggHH.sh
 # Running on the llr tier3
 MadGraph code uses the condor submission commands, which will not work for the LLR Tier3 cluster.
 To make it work, one needs to modify the file ``madgraph/various/cluster.py`` to add the following lines (thanks Andrea!).
-NOTE: this file is copied to the working directory when generating a process. If you have already generated a working directory, you can edit only its own script at ``VBF_HH_generation/bin/internal`` (replace ``VBF_HH_generation`` with the working dir name)
+NOTE: this file is copied to the working directory when generating a process. If you have already generated a working directory, you can edit only its own script at ``VBF_HH_generation/bin/internal`` (replace ``VBF_HH_generation`` with the working dir name).
+The modified script is also copied in [llr/cluster.py](llr/cluster.py), from MG5_aMC_v2_6_1
 
 1. in class ``CondorCluster(Cluster)``, function ``submit`` (approx. line 860) replace the block ``text = """ `` with
 ```
