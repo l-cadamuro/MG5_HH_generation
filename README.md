@@ -56,11 +56,10 @@ you can also generate the config file with MG5_HH_generation/make_config_ggHH.sh
 
 # Running on the llr tier3
 MadGraph code uses the condor submission commands, which will not work for the LLR Tier3 cluster.
-TO make it work, one needs to modify the file ``madgraph/various/cluster.py`` to add the following lines (thanks Andrea!)
+To make it work, one needs to modify the file ``madgraph/various/cluster.py`` to add the following lines (thanks Andrea!).
+NOTE: this file is copied to the working directory when generating a process. If you have already generated a working directory, you can edit only its own script at ``VBF_HH_generation/bin/internal`` (replace ``VBF_HH_generation`` with the working dir name)
 
-1. in class 
-
-2. in class ``CondorCluster(Cluster)``, function ``submit`` (approx. line 860) replace the block ``text = """ `` with
+1. in class ``CondorCluster(Cluster)``, function ``submit`` (approx. line 860) replace the block ``text = """ `` with
 ```
         # A.S: changed to make it compliant with submission at llr 
         text = """Executable = %(prog)s
@@ -85,4 +84,34 @@ TO make it work, one needs to modify the file ``madgraph/various/cluster.py`` to
                   queue 1
                """
 ```
+
+2. in class ``CondorCluster(Cluster)``, function ``submit2`` (approx. line 920) replace the block ``text = """ `` with
+```
+        # A.S: changed to make it compliant with submission at llr        
+        text = """Executable = %(prog)s
+                  output = %(stdout)s
+                  error = %(stderr)s
+                  log = %(log)s
+                  %(argument)s
+                  should_transfer_files = YES
+                  when_to_transfer_output = ON_EXIT
+                  transfer_input_files = %(input_files)s
+                  %(output_files)s
+                  Universe = vanilla
+                  notification = Error
+                  Initialdir = %(cwd)s
+                  %(requirement)s
+                  getenv=True
+
+                  accounting_group = cms
+                  concurrency_limits_expr = strcat(T3Queue,":",RequestCpus," ",AcctGroupUser,":",RequestCpus)
+
+                  +T3Queue="short"
+                  +T3Group="cms"
+                  +T3Submit=true
+
+                  queue 1
+               """
+```
+
 
