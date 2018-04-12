@@ -54,7 +54,7 @@ However, it is much faster to generate one output folder, and then simply do
 ```
 cd MG5_aMC_v2_6_1
 FLD_NAME=GG_HH_generation # or VBF_HH_generation
-for i in {1..HOW_MANY_YOU_WANT}; do cp -r $FLD_NAME $FLD_NAME_${i}; done
+for i in {1..HOW_MANY_YOU_WANT}; do cp -r $FLD_NAME ${FLD_NAME}_${i}; done
 ```
 which avoid re-running the diagrams every time.
 
