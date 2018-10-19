@@ -8,6 +8,7 @@ Utilities to generate LHE files of HH samples using aMC_@NLO
 [Running on the llr tier3](#running-on-the-llr-tier3)  
 [Cluster mode](#cluster-mode)  
 [Disable browser opening](#disable-browser-opening)
+[NMSSM generation](#nmssm-generation)
 
 # Instructions to install
 ```
@@ -170,3 +171,15 @@ automatic_html_opening = False
 If the process was already generated, edit the card in ``PROCESS_FOLDER/Cards/me5_configuration.txt``  
 See also [this link](https://answers.launchpad.net/mg5amcnlo/+faq/1943)
 
+# NMSSM generation
+A custom model by Yiming Zhong is used. It is a modified version of the NSSM model used in [this card](https://github.com/cms-sw/genproductions/blob/master/bin/MadGraph5_aMCatNLO/cards/production/2017/13TeV/ggh01_M125_Toa01a01_M5_Tomumutautau_proc_card.dat), where couplings to the H02 and H03 to gluons have been added to generate g g > H03.
+```
+cp MG5_HH_generation/NMSSM/NMSSMHET_UFO.zip ${MG5FLDR}/models
+cd ${MG5FLDR}/models
+unzip NMSSMHET_UFO.zip
+```
+
+To prepare the folder
+```
+./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_NMSSM_generation.txt
+```
