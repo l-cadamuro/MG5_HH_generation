@@ -17,15 +17,24 @@ cd CMSSW_8_0_26_patch1/src/
 cmsenv
 git clone https://github.com/l-cadamuro/MG5_HH_generation
 ## download MG5
-wget https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/MG5_aMC_v2.6.1.tar.gz
-tar zxvf MG5_aMC_v2.6.1.tar.gz
+#wget https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/MG5_aMC_v2.6.1.tar.gz
+#tar zxvf MG5_aMC_v2.6.1.tar.gz
+MG5VERS=MG5_aMC_v2.6.3.2.tar.gz
+wget https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/${MG5VERS}
+tar zxvf ${MG5VERS}
 ## install the BSM_gg_hh model in the release
-cd MG5_aMC_v2_6_1/models
+#cd MG5_aMC_v2_6_1/models
+# this transforms the tar.gz into the MG5 version folder name
+MG5FLDR=$MG5VERS
+MG5FLDR="${MG5FLDR/.tar.gz/}"
+MG5FLDR="${MG5FLDR//./_}"
+cd ${MG5FLDR}/models
 wget https://cms-project-generators.web.cern.ch/cms-project-generators/BSM_gg_hh.tar
 tar -xvf BSM_gg_hh.tar
 cd ../..
 ## install also the VBF HH model
-cd MG5_aMC_v2_6_1/models
+#cd MG5_aMC_v2_6_1/models
+cd ${MG5FLDR}/models
 wget https://cms-project-generators.web.cern.ch/cms-project-generators/SM_HEL_UFO_noLightYukawa_HH_VBF.tar.gz
 tar zxvf SM_HEL_UFO_noLightYukawa_HH_VBF.tar.gz
 cd ../..
@@ -34,32 +43,32 @@ cd ../..
 # Prepare the folder for the generation
 **Gluon fusion**
 ```
-cd MG5_aMC_v2_6_1
+cd ${MG5VERS}
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_generation.txt
 cd ..
 ```
-which will create a folder ``MG5_aMC_v2_6_1/GG_HH_generation``.
+which will create a folder ``${MG5VERS}/GG_HH_generation``.
 
 **Vector boson fusion**
 ```
-cd MG5_aMC_v2_6_1
+cd ${MG5VERS}
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_VBFgeneration.txt
 cd ..
 ```
-which will create a folder ``MG5_aMC_v2_6_1/VBF_HH_generation``.
+which will create a folder ``${MG5VERS}/VBF_HH_generation``.
 
 *Generating multiple folders*
 The scripts ``prepare_MG5_many.sh`` and ``prepare_MG5_many.sh`` will simply call the above multiple time (call them from ``CMSSW/src``).
 However, it is much faster to generate one output folder, and then simply do
 ```
-cd MG5_aMC_v2_6_1
+cd ${MG5VERS}
 FLD_NAME=GG_HH_generation # or VBF_HH_generation
 for i in {1..HOW_MANY_YOU_WANT}; do cp -r $FLD_NAME ${FLD_NAME}_${i}; done
 ```
 which avoid re-running the diagrams every time.
 
 # For an interactive generation (one point at a time!)
-1. `` cd MG5_aMC_v2_6_1``
+1. `` cd ${MG5VERS}``
 2. set the number of events, energy etc.. by editing ``GG_HH_generation/Cards/run_card.dat``
 3. run the generation interactively as ``./GG_HH_generation/bin/generate_events |output_name|``
 **note:** you can script the generation by doing
