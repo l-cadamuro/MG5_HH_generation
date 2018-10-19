@@ -7,7 +7,7 @@ Utilities to generate LHE files of HH samples using aMC_@NLO
 [For a gridpack generation (single core but can be sent to cluster or grid)](#for-a-gridpack-generation-single-core-but-can-be-sent-to-cluster-or-grid)  
 [Running on the llr tier3](#running-on-the-llr-tier3)  
 [Cluster mode](#cluster-mode)  
-[Disable browser opening](#disable-browser-opening)
+[Disable browser opening](#disable-browser-opening)  
 [NMSSM generation](#nmssm-generation)
 
 # Instructions to install
