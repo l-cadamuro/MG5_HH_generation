@@ -181,5 +181,5 @@ unzip NMSSMHET_UFO.zip
 
 To prepare the folder
 ```
-./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_NMSSM_generation.txt
+./bin/mg5_aMC < ../MG5_HH_generation/NMSSM/prepare_MG5_NMSSM_generation.txt
 ```
