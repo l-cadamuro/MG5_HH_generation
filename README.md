@@ -44,7 +44,7 @@ cd ../..
 # Prepare the folder for the generation
 **Gluon fusion**
 ```
-cd ${MG5VERS}
+cd ${MG5FLDR}
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_generation.txt
 cd ..
 ```
@@ -52,7 +52,7 @@ which will create a folder ``${MG5VERS}/GG_HH_generation``.
 
 **Vector boson fusion**
 ```
-cd ${MG5VERS}
+cd ${MG5FLDR}
 ./bin/mg5_aMC < ../MG5_HH_generation/prepare_MG5_VBFgeneration.txt
 cd ..
 ```
@@ -62,14 +62,14 @@ which will create a folder ``${MG5VERS}/VBF_HH_generation``.
 The scripts ``prepare_MG5_many.sh`` and ``prepare_MG5_many.sh`` will simply call the above multiple time (call them from ``CMSSW/src``).
 However, it is much faster to generate one output folder, and then simply do
 ```
-cd ${MG5VERS}
+cd ${MG5FLDR}
 FLD_NAME=GG_HH_generation # or VBF_HH_generation
 for i in {1..HOW_MANY_YOU_WANT}; do cp -r $FLD_NAME ${FLD_NAME}_${i}; done
 ```
 which avoid re-running the diagrams every time.
 
 # For an interactive generation (one point at a time!)
-1. `` cd ${MG5VERS}``
+1. `` cd ${MG5FLDR}``
 2. set the number of events, energy etc.. by editing ``GG_HH_generation/Cards/run_card.dat``
 3. run the generation interactively as ``./GG_HH_generation/bin/generate_events |output_name|``
 **note:** you can script the generation by doing
