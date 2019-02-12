@@ -20,7 +20,7 @@ git clone https://github.com/l-cadamuro/MG5_HH_generation
 ## download MG5
 #wget https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/MG5_aMC_v2.6.1.tar.gz
 #tar zxvf MG5_aMC_v2.6.1.tar.gz
-MG5VERS=MG5_aMC_v2.6.3.2.tar.gz
+MG5VERS=MG5_aMC_v2.6.5.tar.gz
 wget https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/${MG5VERS}
 tar zxvf ${MG5VERS}
 ## install the BSM_gg_hh model in the release
